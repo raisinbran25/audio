@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>spectral editor</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+      image-rendering: pixelated;
+    }
+  </style>
 </head>
 <body>
-  <!-- File input -->
-  <input type="file" id="fileInput" accept=".mp3,.wav">
-
-
-  <audio id="player" controls src></audio>
-
+  <input type="file" id="fileInput">
+  <button id="play">Play</button>
+  <br><br>
+  <canvas id="spectrogramCanvas" width="1024" height="511"></canvas>
 </body>
-<script type="module" src="script.js"></script>
+<script src="./scripts/script.js" type="module"></script>
 </html>
