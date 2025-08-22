@@ -7,8 +7,10 @@ const dspRatio = 3;
 var sampleRate;
 var maxVal;
 var minVal;
+let dspOriginal = [];
 let liveMatrix = [];
 let zeroBin = [];
+
 
 const fileInput = document.getElementById("fileInput");
 
@@ -41,6 +43,7 @@ async function flow(file) {
     // downsample audio
 
     let dsp = downSample(low);
+    dspOriginal = downSample(low);
 
     let slid = slide(dsp);
 
@@ -294,10 +297,8 @@ function playSignal(signal) {
 
 
 
-
-
-const brushSize = 2;
-const brushStrength = 0.9;
+const brushSize = 5;
+const brushStrength = 0.5;
 
 const canvas = document.getElementById("spectrogramCanvas");
 
@@ -328,8 +329,8 @@ function paintBrush(e) {
 
                 if (distance <= brushSize) {
                     // Calculate falloff multiplier
-                    const falloff = 1 - (distance / brushSize); 
-                    const multiplier = brushStrength * falloff; 
+                    const falloff = distance / brushSize; //approaches 1 further from mouse pointer
+                    const multiplier = brushStrength + falloff * (1 - brushStrength); 
 
                     // Update real & imaginary parts in liveMatrix
                     liveMatrix[x][y].real *= multiplier;
@@ -363,8 +364,8 @@ function paintBrush(e) {
 
 
 
-const playButton = document.getElementById("play");
-playButton.addEventListener("click", (event) => {
+const playNew = document.getElementById("playNew");
+playNew.addEventListener("click", (event) => {
 
     let unfolded = unfold(liveMatrix);
     console.log(unfolded)
@@ -376,6 +377,11 @@ playButton.addEventListener("click", (event) => {
     console.log("played")
 
     console.log("done")
+})
+
+const playOld = document.getElementById("playOld");
+playOld.addEventListener("click", (event) => {
+    playSignal(dspOriginal);
 })
 
 function unfold(truncatedMatrix) {

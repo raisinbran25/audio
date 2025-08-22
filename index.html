@@ -4,6 +4,22 @@
   <meta charset="UTF-8">
   <title>spectral editor</title>
   <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
     canvas {
       border: 1px solid black;
       image-rendering: pixelated;
@@ -11,10 +27,14 @@
   </style>
 </head>
 <body>
-  <input type="file" id="fileInput">
-  <button id="play">Play</button>
-  <br><br>
-  <canvas id="spectrogramCanvas" width="1024" height="511"></canvas>
+  <div class="container">
+    <input type="file" id="fileInput">
+    <div>
+      <button id="playNew">Play New</button>
+      <button id="playOld">Play Old</button>
+    </div>
+    <canvas id="spectrogramCanvas" width="1024" height="511"></canvas>
+  </div>
+  <script src="./scripts/script.js" type="module"></script>
 </body>
-<script src="./scripts/script.js" type="module"></script>
 </html>
