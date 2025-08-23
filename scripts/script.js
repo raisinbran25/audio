@@ -2,7 +2,7 @@ import { fft, ifft } from "./fft.js"
 
 const winSize = 1024;
 const overlap = 256; // number of windows
-const dspRatio = 3;
+const dspRatio = 2;
 
 var sampleRate;
 var maxVal;
@@ -35,6 +35,10 @@ fileInput.addEventListener("change", (event) => {
 async function flow(file) {
 
     let arr = await fileToMono(file);
+
+    // 10 sec max
+    
+    arr.length = 10 * sampleRate;
 
     // low pass filter
 
