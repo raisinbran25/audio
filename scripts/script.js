@@ -11,6 +11,11 @@ let dspOriginal = [];
 let liveMatrix = [];
 let zeroBin = [];
 
+document.getElementById('sample').addEventListener('click', () => {
+    window.open('https://github.com/raisinbran25/audio/blob/main/samples/les.mp3', '_blank');
+    document.getElementById("directions").hidden = false;
+});
+
 
 const fileInput = document.getElementById("fileInput");
 

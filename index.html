@@ -11,6 +11,7 @@
       justify-content: center;
       align-items: center;
       font-family: "Comic Sans MS", "Comic Sans", cursive;
+      font-size: small;
     }
 
     .container {
@@ -29,12 +30,16 @@
 <body>
   <div class="container">
     <input type="file" id="fileInput">
+    <button id="sample">or try "Les" by Childish Gambino!</button>
     <div>
       <button id="playNew">Play New</button>
       <button id="playOld">Play Old</button>
     </div>
+    <div>
+      <div id="directions", hidden="true">1. Download the file in the new tab. 2. Upload to the Choose File button above. 3. Try removing the kicks at the bottom of the spectrogram. 4. Hear the difference you made between the old and new audio.</div>
+    </div>
     <canvas id="spectrogramCanvas" width="1024" height="511"></canvas>
   </div>
-  <script src="./scripts/script.js" type="module"></script>
+    <script src="./scripts/script.js" type="module"></script>
 </body>
 </html>
